@@ -1,8 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  it "has a valid factory" do
+    expect(FactoryGirl.build(:user)).to be_valid
+  end
+
   it "is valid with a first name, last name,, email and password" do
-    user = User.new(first_name: 'Sebastian', last_name: 'Meza', email: 'sbstnmz@gmail.com', password: '123456')
+    user = FactoryGirl.build(:user)
     expect(user).to be_valid
   end
 
@@ -45,7 +49,7 @@ RSpec.describe User, type: :model do
       last_name: "Doe",
       email: "johndoe@example.com",
     )
-    
+
     expect(user.name).to eq "John Doe"
   end
 end
